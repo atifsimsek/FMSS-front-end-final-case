@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import './styles/reset.scss';
-import './styles/index.scss';
+import './styles/styles.scss';
 
 function App() {
   return (

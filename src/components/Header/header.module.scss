@@ -1,0 +1,137 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.nav {
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 70px;
+  padding: 1rem 1.5rem;
+  background-color: $primary-light;
+  box-shadow: $light-saber-light 0px 14px 28px, $light-saber-light 0px 5px 10px;
+
+  &.dark {
+    background-color: $primary-dark;
+    box-shadow: $light-saber-dark 0px 14px 28px, $light-saber-dark 0px 5px 10px;
+  }
+
+  //  Lightsaber
+
+  .lightsaber {
+    @include center;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    .saber {
+      animation: lightsaber-animation 1s ease-in-out forwards;
+      animation-delay: 0.25s;
+      height: 5px;
+      margin-top: 1.4px;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0px 0px 4px 2px $light-saber-light;
+      &:hover {
+        background-color: #fff;
+        box-shadow: 0px 0px 4px 2px $light-saber-dark;
+      }
+      &.dark {
+        background-color: #fff;
+        box-shadow: 0px 0px 4px 2px $light-saber-dark;
+        &:hover {
+          box-shadow: 0px 0px 4px 2px $light-saber-light;
+        }
+      }
+    }
+    @keyframes lightsaber-animation {
+      0% {
+        width: 0px;
+      }
+      100% {
+        width: 80px;
+      }
+    }
+  }
+
+  // Logo
+
+  .logo {
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  // Links
+
+  .links {
+    @include center;
+    font-size: 12px;
+    gap: 1rem;
+
+    .link {
+      @include center;
+      width: 100px;
+      gap: 0.5rem;
+      position: relative;
+      color: $text-secondary-dark;
+      &.dark {
+        color: $secondary-light;
+      }
+
+      // Links light after
+
+      &::after {
+        content: '';
+        transition: all 0.5s;
+        border-radius: 4px;
+        width: 0%;
+        position: absolute;
+        left: 8px;
+
+        bottom: -10px;
+        height: 1px;
+        box-shadow: 0px 0px 4px 1px $light-saber-light;
+        visibility: hidden;
+      }
+      // Links dark after
+      &.dark::after {
+        background-color: #fff;
+        box-shadow: 0px 0px 4px 1px $light-saber-dark;
+      }
+
+      // Links hover after
+      &:hover::after {
+        visibility: visible;
+        width: 90%;
+      }
+    }
+
+    // Links light active
+    .active {
+      color: $text-primary-dark;
+      &.dark {
+        color: $primary-light;
+      }
+      &::after {
+        transition: all 0.5s;
+        border-radius: 4px;
+        width: 90%;
+        position: absolute;
+
+        bottom: -10px;
+        height: 1px;
+        box-shadow: 0px 0px 4px 1px $light-saber-light;
+        visibility: visible;
+      }
+      // Links dark active
+
+      &.dark::after {
+        background-color: #fff;
+        box-shadow: 0px 0px 4px 1px $light-saber-dark;
+      }
+    }
+  }
+}
