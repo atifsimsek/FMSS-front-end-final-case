@@ -11,7 +11,7 @@
   padding: 1rem 1.5rem;
   background-color: $primary-light;
   box-shadow: $light-saber-light 0px 14px 28px, $light-saber-light 0px 5px 10px;
-
+  z-index: 10;
   &.dark {
     background-color: $primary-dark;
     box-shadow: $light-saber-dark 0px 14px 28px, $light-saber-dark 0px 5px 10px;
