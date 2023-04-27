@@ -11,7 +11,7 @@
   padding: 1rem 1.5rem;
   background-color: $primary-light;
   box-shadow: $light-saber-light 0px 14px 28px, $light-saber-light 0px 5px 10px;
-  z-index: 10;
+
   &.dark {
     background-color: $primary-dark;
     box-shadow: $light-saber-dark 0px 14px 28px, $light-saber-dark 0px 5px 10px;
@@ -27,7 +27,7 @@
     cursor: pointer;
     .saber {
       animation: lightsaber-animation 1s ease-in-out forwards;
-      animation-delay: 0.25s;
+      animation-delay: 1s;
       height: 5px;
       margin-top: 1.4px;
       border-radius: 0 10px 10px 0;
@@ -76,9 +76,9 @@
       width: 100px;
       gap: 0.5rem;
       position: relative;
-      color: $text-secondary-dark;
+      color: $secondary-light;
       &.dark {
-        color: $secondary-light;
+        color: $text-secondary-dark;
       }
 
       // Links light after

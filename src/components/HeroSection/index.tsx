@@ -6,11 +6,13 @@ import dartVader from '../../assets/dartVader.jpg';
 import skywalker from '../../assets/skywalker.jpg';
 import yoda from '../../assets/yoda.jpg';
 import leia from '../../assets/leia.jpg';
+import { GalleryItem } from '../../types/GalleryItem';
 
-const Index = () => {
+const HeroSection: React.FC = () => {
   const theme = useTheme();
   const [panelIndex, setPanelIndex] = useState<number | null>(null);
-  const galleryData = [
+
+  const galleryData: GalleryItem[] = [
     {
       image: hanSolo,
       title: `${theme === 'dark' ? 'welcome' : 'may'}`,
@@ -48,7 +50,7 @@ const Index = () => {
 
   return (
     <section className={styles['panel-box']}>
-      {galleryData.map((item, index) => (
+      {galleryData.map((item: GalleryItem, index: number) => (
         <div
           onClick={() => {
             handleClick(index);
@@ -67,4 +69,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default HeroSection;

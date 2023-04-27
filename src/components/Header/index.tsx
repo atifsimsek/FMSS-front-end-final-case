@@ -5,14 +5,12 @@ import { toggleTheme, useTheme } from '../../store/redux-helpers/themeHelper';
 import { AiOutlineUser } from 'react-icons/ai';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RxHome } from 'react-icons/rx';
-import Svg from '../../assets/svg';
+import Svg from '../../assets/Svg';
+import { LinkItem } from '../../types/LinkItem';
 
-const Header = () => {
+const Header: React.FC = () => {
   const theme = useTheme();
-
-  console.log(theme);
-
-  const links = [
+  const links: LinkItem[] = [
     { title: 'Home', href: '/', Icon: <RxHome size={25} /> },
     { title: 'Login', href: '/login', Icon: <AiOutlineUser size={25} /> },
     {
@@ -40,11 +38,11 @@ const Header = () => {
       </Link>
       {/* Navigation Links */}
       <div className={styles.links}>
-        {links.map((link, index) => (
+        {links.map((link: LinkItem, index: number) => (
           <NavLink
             key={index}
             to={link.href}
-            className={({ isActive }) =>
+            className={({ isActive }: { isActive: boolean }) =>
               isActive
                 ? `${styles.active} ${styles.link} ${styles[theme]}`
                 : `${styles.link} ${styles[theme]}`

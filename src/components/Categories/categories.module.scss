@@ -1,0 +1,56 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.categories {
+  width: 100%;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  @include center;
+  &.dark {
+    background-color: $dark-9;
+  }
+  //Category
+  .category {
+    border-radius: 2px;
+    height: 100%;
+    width: 250px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    border-left: 1px solid $border-ligt;
+    border-right: 1px solid $border-ligt;
+    color: $secondary-light;
+    transition: all 0.2s;
+    font-size: 16px;
+    //Category dark
+    &.dark {
+      color: $text-secondary-dark;
+      border-left: 1px solid $border-dark;
+      border-right: 1px solid $border-dark;
+    }
+    //Category hover
+    &:hover {
+      background-color: rgba(247, 246, 246, 0.603);
+      box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.205);
+      color: $primary-dark;
+      //Category hover dark
+      &.dark {
+        color: $primary-light;
+        background-color: rgb(49, 49, 49);
+      }
+    }
+  }
+  //Category active
+  .active {
+    background-color: rgba(247, 246, 246, 0.603);
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.205);
+    color: $primary-dark;
+    //Category active dark
+    &.dark {
+      color: $primary-light;
+      background-color: rgb(49, 49, 49);
+    }
+  }
+}
