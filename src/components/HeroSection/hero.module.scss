@@ -22,6 +22,11 @@
     //Panel hover
     &:hover {
       opacity: 0.9;
+      p {
+        &:first-child {
+          opacity: 1;
+        }
+      }
     }
 
     //Texts

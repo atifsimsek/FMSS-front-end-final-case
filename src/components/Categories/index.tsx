@@ -7,7 +7,7 @@ const Categories: React.FC = () => {
 
   const categories: string[] = ['characters', 'films', 'starships', 'vehicles'];
 
-  const [buttonIndex, setButtonIndex] = useState<number | null>(null);
+  const [buttonIndex, setButtonIndex] = useState<number | null>(2);
 
   const handleClick = (index: number, category: string) => {
     if (buttonIndex === index) {

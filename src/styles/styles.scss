@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-body {
+.theme {
   font-family: 'Poppins', sans-serif;
-  background-color: beige;
+  background-color: #fff;
+  transition: background-color 0.5s;
+  &.dark {
+    background-color: #252525;
+  }
+
+  .container {
+    display: flex;
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+  }
 }

@@ -109,3 +109,8 @@ input {
 a {
   text-decoration: none;
 }
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
