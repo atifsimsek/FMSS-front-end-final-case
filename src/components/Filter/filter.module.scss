@@ -1,11 +1,11 @@
-@import '../../styles/styles.scss';
+@import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
 .filter {
   transition: background-color 0.5s;
   max-width: 280px;
   height: 600px;
-  background-color: rgb(209, 209, 209);
+  background-color: #e0e0e0;
   display: flex;
   padding: 2rem 2rem;
   gap: 1rem;

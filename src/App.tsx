@@ -6,6 +6,7 @@ import './styles/styles.scss';
 import Filter from './components/Filter';
 import Main from './components/Main';
 import { useTheme } from './store/redux-helpers/themeHelper';
+import Footer from './components/Footer';
 
 function App() {
   const theme = useTheme();
@@ -18,6 +19,7 @@ function App() {
         <Filter />
         <Main />
       </div>
+      <Footer />
     </div>
   );
 }

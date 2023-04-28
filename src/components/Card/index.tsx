@@ -1,8 +1,10 @@
+import { useTheme } from '../../store/redux-helpers/themeHelper';
 import styles from './card.module.scss';
 
-const Card = () => {
+const Card: React.FC = () => {
+  const theme = useTheme();
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${styles[theme]}`}>
       <div className={styles.imgBox}>
         <img
           src="https://i.ebayimg.com/images/g/2AEAAMXQ0pNQ9kgu/s-l500.jpg"
