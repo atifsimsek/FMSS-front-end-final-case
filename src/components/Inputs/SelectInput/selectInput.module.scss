@@ -1,9 +1,10 @@
 @import '../../../styles/mixins.scss';
 @import '../../../styles/variables.scss';
 
-$bg-color: #2c2c2c;
-$muted-color: mix(white, $bg-color, 40%);
-$input-color: mix(white, $bg-color, 20%);
+//input values
+$input-bg-color: #2c2c2c;
+$label-color: mix(white, $input-bg-color, 40%);
+$button-color: mix(white, $input-bg-color, 20%);
 $trans-time: 300ms;
 $width: 100%;
 
@@ -20,7 +21,7 @@ $width: 100%;
   //Label
   .title {
     margin-left: 5px;
-    color: $muted-color;
+    color: $label-color;
   }
 
   .titleOpen {
@@ -43,15 +44,17 @@ $width: 100%;
     background-color: #f8f5f5;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     font-weight: bold;
-    color: $input-color;
+    color: $button-color;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 
     &.dark {
       color: rgb(214, 210, 210);
       background-color: rgba(70, 67, 67, 0.603);
-      &:focus {
+      &:focus,
+      &:hover {
         box-shadow: 0px 0px 4px 1px $light-saber-dark;
       }
     }
@@ -63,7 +66,8 @@ $width: 100%;
       transform: rotate(0deg);
     }
 
-    &:focus {
+    &:focus,
+    &:hover {
       box-shadow: 0px 0px 4px 1px $light-saber-light;
     }
   }

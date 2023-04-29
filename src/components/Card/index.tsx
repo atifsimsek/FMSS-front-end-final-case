@@ -1,20 +1,37 @@
 import { useTheme } from '../../store/redux-helpers/themeHelper';
 import styles from './card.module.scss';
+import imageData from '../../data/ımageData.json';
 
-const Card: React.FC = () => {
+interface Props {
+  item: any;
+}
+
+const Card: React.FC<Props> = ({ item }: Props) => {
   const theme = useTheme();
+  const img = imageData.find((image) => image.name === item.name)?.img;
+
   return (
     <div className={`${styles.card} ${styles[theme]}`}>
       <div className={styles.imgBox}>
-        <img
-          src="https://i.ebayimg.com/images/g/2AEAAMXQ0pNQ9kgu/s-l500.jpg"
-          alt=""
-        />
+        {img ? (
+          <img src={img} alt="" />
+        ) : (
+          <img
+            style={{
+              background: `${theme === 'dark' ? 'black' : 'gray'}`,
+              padding: '10px 50px',
+            }}
+            src={
+              'https://logolook.net/wp-content/uploads/2021/07/Star-Wars-Logo.png'
+            }
+            alt=""
+          />
+        )}
       </div>
       <div className={styles.texts}>
-        <h3>title</h3>
-        <p>model</p>
-        <p>rating</p>
+        <h3>{item?.name}</h3>
+        <p>{item?.model}</p>
+        <p>{item?.hyperdrive_rating}</p>
       </div>
     </div>
   );

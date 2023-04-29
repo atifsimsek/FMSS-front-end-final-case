@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
-import { RootState, store } from '..';
+import { store } from '..';
 import { updateTheme } from '../features/themeSlice';
+import { useAppSelector } from '../hooks';
 
 // Use Theme
-export const useTheme = () =>
-  useSelector((state: RootState) => state.theme.theme);
+export const useTheme = () => useAppSelector((state) => state.theme.theme);
 
 // Use Set Theme
 export const toggleTheme = (theme: string) =>

@@ -3,7 +3,7 @@
 
 //input values
 $bg-color: #2c2c2c;
-$muted-color: mix(white, $bg-color, 40%);
+$label-color: mix(white, $bg-color, 40%);
 $trans-time: 300ms;
 $width: 100%;
 
@@ -21,7 +21,7 @@ $width: 100%;
     width: $width;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid $muted-color;
+    border-bottom: 1px solid $label-color;
     // Input Dark
     &.dark {
       color: #fff;
@@ -48,7 +48,7 @@ $width: 100%;
   }
   // Label
   label {
-    color: $muted-color;
+    color: $label-color;
     font-size: 16px;
     font-weight: normal;
     position: absolute;

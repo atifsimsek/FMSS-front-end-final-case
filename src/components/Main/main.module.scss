@@ -1,17 +1,24 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
+
 .main {
   flex: 1;
-  width: 75%;
+  width: 100%;
   background-color: #e0e0e0;
-  @include center;
-  flex-wrap: wrap;
   padding: 3rem 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   gap: 2rem;
+  @include center;
+  flex-direction: column;
 
   &.dark {
     background-color: $dark-9;
+  }
+
+  .box {
+    @include center;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 
   .icon {
@@ -34,6 +41,32 @@
     }
     &:hover {
       background-color: rgba(0, 0, 0, 0.74);
+    }
+  }
+  .loadMore {
+    text-transform: capitalize;
+    cursor: pointer;
+    width: 300px;
+    border: none;
+    user-select: none;
+    padding: 10px;
+    background-color: #f8f5f5;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    font-weight: bold;
+    color: mix(white, #2c2c2c, 20%);
+    &:disabled {
+      opacity: 0.5;
+      cursor: no-drop;
+    }
+    &:hover {
+      box-shadow: 0px 0px 4px 1px $light-saber-light;
+    }
+    &.dark {
+      color: rgb(214, 210, 210);
+      background-color: rgba(70, 67, 67, 0.603);
+      &:hover {
+        box-shadow: 0px 0px 4px 1px $light-saber-dark;
+      }
     }
   }
 }
