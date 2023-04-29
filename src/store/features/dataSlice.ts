@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchData } from '../services/dataService';
 import { useAppSelector } from '../hooks';
-import { Item } from '../../types/ApiTypes';
+import { AllTypes, Item } from '../../types/ApiTypes';
 
 interface DataState {
   count: number;
-  items: Item[];
+  items: AllTypes[];
   category: string;
   loadMore: string;
   isLoading: boolean;

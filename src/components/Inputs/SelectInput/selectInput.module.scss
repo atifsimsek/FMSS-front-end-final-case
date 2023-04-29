@@ -20,6 +20,7 @@ $width: 100%;
 
   //Label
   .title {
+    font-size: 14px;
     margin-left: 5px;
     color: $label-color;
   }
@@ -80,6 +81,7 @@ $width: 100%;
     color: #333;
     width: 100%;
     transform: all $trans-time;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     z-index: 50;
     &.dark {
       color: white;

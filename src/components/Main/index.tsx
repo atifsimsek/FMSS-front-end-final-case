@@ -1,8 +1,9 @@
+import { store } from '../../store';
 import { setloadMore, useData } from '../../store/features/dataSlice';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useTheme } from '../../store/redux-helpers/themeHelper';
 import { fetchData } from '../../store/services/dataService';
-import { Item } from '../../types/ApiTypes';
+import { AllTypes, Item } from '../../types/ApiTypes';
 import Card from '../Card';
 import styles from './main.module.scss';
 import { useEffect, useState } from 'react';
@@ -11,6 +12,7 @@ import { SlArrowUp } from 'react-icons/sl';
 const Main: React.FC = () => {
   const theme = useTheme();
   const { items, category, count } = useData();
+  const filter = useAppSelector((state) => state.filterData.filteredItems);
   const [showButton, setShowButton] = useState<boolean>(false);
   // Calculating the number of pages for each category
   const [page, setPage] = useState<number>(2);
@@ -50,13 +52,12 @@ const Main: React.FC = () => {
     dispatch(fetchData({ category: category, page: page }));
   };
 
-  console.log(totalPages, 'page', page);
   return (
     <main className={`${styles.main} ${styles[theme]}`}>
       <div className={`${styles.box} ${styles[theme]}`}>
-        {items &&
-          items.map((item: Item, index: number) => (
-            <Card key={index} item={item} />
+        {filter &&
+          filter.map((item: AllTypes, index: number) => (
+            <Card key={index} item={item} index={index} />
           ))}
       </div>
       {showButton && (

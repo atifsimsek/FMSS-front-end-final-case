@@ -1,12 +1,14 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import themeReducer from './features/themeSlice';
 import dataReducer from './features/dataSlice';
+import filterReducer from './features/filterSlice';
 
 // Create store
 
 const rootReducer = combineReducers({
   theme: themeReducer,
   data: dataReducer,
+  filterData: filterReducer,
 });
 
 export const store = configureStore({

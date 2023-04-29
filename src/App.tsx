@@ -7,18 +7,16 @@ import Filter from './components/Filter';
 import Main from './components/Main';
 import { useTheme } from './store/redux-helpers/themeHelper';
 import Footer from './components/Footer';
+import Layout from './pages/Layout';
+import { useRoutes } from 'react-router-dom';
+import routes from './routes';
 
 function App() {
   const theme = useTheme();
   return (
     <div className={`theme ${theme} `}>
       <Header />
-      <HeroSection />
-      <Categories />
-      <div className="container">
-        <Filter />
-        <Main />
-      </div>
+      <Layout>{useRoutes(routes)}</Layout>
       <Footer />
     </div>
   );

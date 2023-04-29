@@ -32,6 +32,7 @@ const Categories: React.FC = () => {
     <div className={`${styles.categories} ${styles[theme]}`}>
       {categories.map((category, index: number) => (
         <button
+          disabled={buttonIndex === index && true}
           onClick={() => {
             handleClick(index, category.value);
           }}
