@@ -1,17 +1,22 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import styles from './header.module.scss';
 import { toggleTheme, useTheme } from '../../store/redux-helpers/helper';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { IoClose } from 'react-icons/io5';
 import Svg from '../../assets/Svg';
-import { LinkItem } from '../../types/LinkItem';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { links } from '../../constants/data';
+import { LinkItem } from '../../types/DataTypes';
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <nav className={`${styles.nav} ${styles[theme]}`}>

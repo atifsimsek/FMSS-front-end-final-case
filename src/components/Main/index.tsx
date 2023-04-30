@@ -1,4 +1,8 @@
-import { setloadMore, useData } from '../../store/features/dataSlice';
+import {
+  setCurrentPage,
+  setloadMore,
+  useData,
+} from '../../store/features/dataSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useTheme } from '../../store/redux-helpers/helper';
 import { fetchData } from '../../store/services/dataService';
@@ -11,13 +15,13 @@ import { SlArrowUp } from 'react-icons/sl';
 
 const Main: React.FC = () => {
   const theme = useTheme();
-  const { items, category, totalPages, isLoading } = useData();
+  const { items, category, totalPages, isLoading, currentPage } = useData();
   const filter = useAppSelector((state) => state.filterData.filteredItems);
   const [showButton, setShowButton] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
+
   const dispatch = useAppDispatch();
 
-  const disableLoadMoreButton = items.length === 0 || page >= totalPages;
+  const disableLoadMoreButton = items.length === 0 || currentPage >= totalPages;
 
   // "Back to top" button
   useEffect(() => {
@@ -35,7 +39,7 @@ const Main: React.FC = () => {
 
   // Get data and reset page number
   useEffect(() => {
-    setPage(1);
+    dispatch(setCurrentPage(1));
     dispatch(fetchData({ category: category, page: 1 }));
   }, [dispatch, category]);
 
@@ -43,8 +47,8 @@ const Main: React.FC = () => {
 
   const loadMore = () => {
     dispatch(setloadMore(category));
-    dispatch(fetchData({ category: category, page: page + 1 }));
-    setPage(page + 1);
+    dispatch(fetchData({ category: category, page: currentPage + 1 }));
+    dispatch(setCurrentPage(currentPage + 1));
   };
 
   return (
@@ -55,7 +59,7 @@ const Main: React.FC = () => {
             isLoading ? (
               <Skeleton key={index} />
             ) : (
-              <Card key={index} item={item} page={page} />
+              <Card key={index} item={item} page={currentPage} />
             )
           )}
       </div>

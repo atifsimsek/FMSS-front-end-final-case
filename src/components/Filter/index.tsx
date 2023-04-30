@@ -39,21 +39,21 @@ const Filter: React.FC = () => {
   // Define memoized filter functions with useCallback
   const filterBySearchMemoized = useCallback(
     () => dispatch(filterBySearch({ items, search })),
+
     [dispatch, items, search]
   );
-  const filterByHyperdriveMemoized = useCallback(
-    () =>
-      dispatch(filterByHyperdrive({ items, filter: hyperdriveRatingFilter })),
-    [dispatch, items, hyperdriveRatingFilter]
-  );
-  const sortBySpeedMemoized = useCallback(
-    () => dispatch(sortBySpeed({ items, filter: speedFilter })),
-    [dispatch, items, speedFilter]
-  );
-  const sortByAlphabeticallyMemoized = useCallback(
-    () => dispatch(sortByAlphabetically({ items, filter: sortAlphabetFilter })),
-    [dispatch, items, sortAlphabetFilter]
-  );
+  const filterByHyperdriveMemoized = useCallback(() => {
+    dispatch(filterByHyperdrive({ items, filter: hyperdriveRatingFilter }));
+    setOpen(false);
+  }, [dispatch, items, hyperdriveRatingFilter, setOpen]);
+  const sortBySpeedMemoized = useCallback(() => {
+    dispatch(sortBySpeed({ items, filter: speedFilter }));
+    setOpen(false);
+  }, [dispatch, items, speedFilter, setOpen]);
+  const sortByAlphabeticallyMemoized = useCallback(() => {
+    dispatch(sortByAlphabetically({ items, filter: sortAlphabetFilter }));
+    setOpen(false);
+  }, [dispatch, items, sortAlphabetFilter, setOpen]);
 
   // Effect for filtering by search term
   useEffect(() => {

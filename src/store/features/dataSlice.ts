@@ -4,6 +4,8 @@ import { useAppSelector } from '../hooks';
 import { AllTypes } from '../../types/ApiTypes';
 
 interface DataState {
+  currentPage: number;
+  favorites: AllTypes[];
   totalPages: number;
   items: AllTypes[];
   category: string;
@@ -13,6 +15,8 @@ interface DataState {
 }
 
 const initialState: DataState = {
+  currentPage: 1,
+  favorites: [],
   totalPages: 1,
   items: [],
   category: 'starships',
@@ -30,6 +34,20 @@ const dataSlice = createSlice({
     },
     setloadMore: (state, action) => {
       state.loadMore = action.payload;
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    handleFavorite: (state, action) => {
+      const data = action.payload;
+      const index = state.favorites.findIndex(
+        (item: any) => item.name === data.name
+      );
+      if (index === -1) {
+        state.favorites.push(data);
+      } else {
+        state.favorites.splice(index, 1);
+      }
     },
   },
   extraReducers(builder) {
@@ -53,7 +71,8 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setCategory, setloadMore } = dataSlice.actions;
+export const { setCategory, setloadMore, handleFavorite, setCurrentPage } =
+  dataSlice.actions;
 
 export default dataSlice.reducer;
 

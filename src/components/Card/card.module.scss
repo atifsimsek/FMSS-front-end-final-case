@@ -1,16 +1,35 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
+$input-bg-color: #2c2c2c;
+$label-color: mix(white, $input-bg-color, 40%);
+$button-color: mix(white, $input-bg-color, 20%);
 .card {
+  overflow: hidden;
   min-width: 350px;
-  height: 320px;
+  height: 336px;
   color: black;
   background-color: rgb(252, 252, 252);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  position: relative;
   &.dark {
     color: white;
     background-color: #302f30;
   }
+
+  .favBtn {
+    @include center;
+    padding: 0.5rem;
+    border: none;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
   .imgBox {
     padding-top: 50%;
     position: relative;
@@ -28,6 +47,7 @@
     @include center;
     padding-top: 1rem;
     flex-direction: column;
+
     gap: 1rem;
     h3 {
       font-size: 18px;
@@ -36,16 +56,43 @@
     .details {
       display: grid;
       gap: 0.5rem;
-      width: 70%;
+      width: 85%;
     }
     p {
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 12px;
+
       span {
         font-size: 14px;
         font-weight: 600;
+      }
+    }
+    .detailsBtn {
+      @include center;
+      text-transform: capitalize;
+      width: 100%;
+      border: none;
+      user-select: none;
+      padding: 11px;
+      color: black;
+      background-color: rgba(179, 176, 176, 0.603);
+      box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+      font-weight: 600;
+      font-size: 15px;
+
+      cursor: pointer;
+      &.dark {
+        color: $button-color;
+        background-color: #eceaea;
+        &:hover {
+          box-shadow: 0px 0px 4px 1px $light-saber-dark;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0px 0px 4px 1px $light-saber-light;
       }
     }
   }
