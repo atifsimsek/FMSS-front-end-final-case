@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useState, useEffect, useCallback } from 'react';
+import { useTheme } from '../../store/redux-helpers/helper';
 import { useAppDispatch } from '../../store/hooks';
 import { useData } from '../../store/features/dataSlice';
 import {
@@ -11,9 +11,14 @@ import {
 import SearchInput from '../Inputs/SearchInput';
 import SelectInput from '../Inputs/SelectInput';
 import styles from './Filter.module.scss';
-import { AllTypes, Item } from '../../types/ApiTypes';
-import { MdMenuOpen, MdMenu } from 'react-icons/md';
+import { AllTypes } from '../../types/ApiTypes';
+import { MdMenuOpen } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
+import {
+  hyperdriveRatingOptions,
+  sortByAlphabetOptions,
+  speedOptions,
+} from '../../constants/data';
 
 const Filter: React.FC = () => {
   // State for filter options
@@ -25,40 +30,50 @@ const Filter: React.FC = () => {
   const [sortAlphabetFilter, setSortAlphabetFilter] =
     useState<string>('ChooseOne');
 
-  // Options for each filter
-  const hyperdriveRatingOptions: string[] = ['ChooseOne', '0-2', '3-4', '5>'];
-  const speedOptions: string[] = [
-    'ChooseOne',
-    'Slowest to Fastest',
-    'Fastest to Slowest',
-  ];
-  const sortByAlphabetOptions: string[] = ['ChooseOne', 'a-z', 'z-a'];
-
   // Hooks for accessing data and Redux store
   const theme: string = useTheme();
   const { items, category }: { items: AllTypes[]; category: string } =
     useData();
   const dispatch = useAppDispatch();
 
+  // Define memoized filter functions with useCallback
+  const filterBySearchMemoized = useCallback(
+    () => dispatch(filterBySearch({ items, search })),
+    [dispatch, items, search]
+  );
+  const filterByHyperdriveMemoized = useCallback(
+    () =>
+      dispatch(filterByHyperdrive({ items, filter: hyperdriveRatingFilter })),
+    [dispatch, items, hyperdriveRatingFilter]
+  );
+  const sortBySpeedMemoized = useCallback(
+    () => dispatch(sortBySpeed({ items, filter: speedFilter })),
+    [dispatch, items, speedFilter]
+  );
+  const sortByAlphabeticallyMemoized = useCallback(
+    () => dispatch(sortByAlphabetically({ items, filter: sortAlphabetFilter })),
+    [dispatch, items, sortAlphabetFilter]
+  );
+
   // Effect for filtering by search term
   useEffect(() => {
-    dispatch(filterBySearch({ items, search }));
-  }, [dispatch, items, search]);
+    filterBySearchMemoized();
+  }, [filterBySearchMemoized]);
 
   // Effect for filtering by hyperdrive rating
   useEffect(() => {
-    dispatch(filterByHyperdrive({ items, filter: hyperdriveRatingFilter }));
-  }, [dispatch, hyperdriveRatingFilter]);
+    filterByHyperdriveMemoized();
+  }, [filterByHyperdriveMemoized]);
 
   // Effect for sorting by speed
   useEffect(() => {
-    dispatch(sortBySpeed({ items, filter: speedFilter }));
-  }, [dispatch, speedFilter]);
+    sortBySpeedMemoized();
+  }, [sortBySpeedMemoized]);
 
   // Effect for sorting alphabetically
   useEffect(() => {
-    dispatch(sortByAlphabetically({ items, filter: sortAlphabetFilter }));
-  }, [dispatch, sortAlphabetFilter]);
+    sortByAlphabeticallyMemoized();
+  }, [sortByAlphabeticallyMemoized]);
 
   // Reset the filter when the category changes
   useEffect(() => {

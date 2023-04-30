@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './notFound.module.scss';
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   const theme = useTheme();
   const navigate = useNavigate();
 

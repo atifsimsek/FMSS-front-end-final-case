@@ -1,4 +1,4 @@
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 import styles from './card.module.scss';
 import imageData from '../../data/ımageData.json';
 import { AllTypes } from '../../types/ApiTypes';

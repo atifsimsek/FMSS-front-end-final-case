@@ -1,23 +1,18 @@
 import { useState } from 'react';
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 import styles from './categories.module.scss';
 import { useAppDispatch } from '../../store/hooks';
 import { fetchData } from '../../store/services/dataService';
 import { setCategory } from '../../store/features/dataSlice';
+import { categories } from '../../constants/data';
 
 const Categories: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
-  const categories = [
-    { label: 'Characters', value: 'people' },
-    { label: 'Films', value: 'films' },
-    { label: 'Starships', value: 'starships' },
-    { label: 'Vehicles', value: 'vehicles' },
-  ];
 
   const [buttonIndex, setButtonIndex] = useState<number | null>(2);
 
-  //Select Category
+  //  Set category and fetch data
   const handleClick = (index: number, category: string) => {
     if (buttonIndex === index) {
       setButtonIndex(null);

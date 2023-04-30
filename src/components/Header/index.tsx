@@ -1,27 +1,17 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import styles from './header.module.scss';
-import { toggleTheme, useTheme } from '../../store/redux-helpers/themeHelper';
-import { AiOutlineUser, AiOutlineMenu } from 'react-icons/ai';
+import { toggleTheme, useTheme } from '../../store/redux-helpers/helper';
+import { AiOutlineMenu } from 'react-icons/ai';
 import { IoClose } from 'react-icons/io5';
-import { MdOutlineFavoriteBorder } from 'react-icons/md';
-import { RxHome } from 'react-icons/rx';
 import Svg from '../../assets/Svg';
 import { LinkItem } from '../../types/LinkItem';
 import { useState } from 'react';
+import { links } from '../../constants/data';
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
-  const links: LinkItem[] = [
-    { title: 'Home', href: '/', Icon: <RxHome size={25} /> },
-    { title: 'Login', href: '/login', Icon: <AiOutlineUser size={25} /> },
-    {
-      title: 'Favorites',
-      href: '/favorites',
-      Icon: <MdOutlineFavoriteBorder size={25} />,
-    },
-  ];
 
   return (
     <nav className={`${styles.nav} ${styles[theme]}`}>

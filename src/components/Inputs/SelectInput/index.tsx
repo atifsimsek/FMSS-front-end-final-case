@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './selectInput.module.scss';
 import { BsChevronDown } from 'react-icons/bs';
-import { useTheme } from '../../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../../store/redux-helpers/helper';
 
 interface Props {
   title: string;

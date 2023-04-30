@@ -1,7 +1,7 @@
 import styles from './details.module.scss';
 import imageData from '../../data/ımageData.json';
 import { useData } from '../../store/features/dataSlice';
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../store/hooks';
 import { fetchData } from '../../store/services/dataService';
@@ -14,7 +14,7 @@ const Detail = () => {
   const theme = useTheme();
 
   // Access the current page and item ID from the URL parameters
-  const { page, id } = useParams();
+  const { page, id } = useParams<{ page: string; id: string }>();
 
   // Navigate back to the main page
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 import styles from './footer.module.scss';
 import { BsGithub, BsLinkedin, BsInstagram } from 'react-icons/bs';
 

@@ -5,7 +5,7 @@ import './styles/reset.scss';
 import './styles/styles.scss';
 import Filter from './components/Filter';
 import Main from './components/Main';
-import { useTheme } from './store/redux-helpers/themeHelper';
+import { useTheme } from './store/redux-helpers/helper';
 import Footer from './components/Footer';
 import Layout from './pages/Layout';
 import { useRoutes } from 'react-router-dom';

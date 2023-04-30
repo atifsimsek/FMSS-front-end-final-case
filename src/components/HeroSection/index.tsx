@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import React, { useState, memo } from 'react';
 import styles from './hero.module.scss';
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 import hanSolo from '../../assets/hanSolo.jpg';
 import dartVader from '../../assets/dartVader.jpg';
 import skywalker from '../../assets/skywalker.jpg';
 import yoda from '../../assets/yoda.jpg';
 import leia from '../../assets/leia.jpg';
-import { GalleryItem } from '../../types/GalleryItem';
+import { GalleryItem } from '../../types/DataTypes';
 
-const HeroSection: React.FC = () => {
+const HeroSection: React.FC = memo(() => {
   const theme = useTheme();
   const [panelIndex, setPanelIndex] = useState<number | null>(null);
 
@@ -67,6 +67,6 @@ const HeroSection: React.FC = () => {
       ))}
     </section>
   );
-};
+});
 
 export default HeroSection;

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchData } from '../services/dataService';
 import { useAppSelector } from '../hooks';
-import { AllTypes, Item } from '../../types/ApiTypes';
+import { AllTypes } from '../../types/ApiTypes';
 
 interface DataState {
   totalPages: number;

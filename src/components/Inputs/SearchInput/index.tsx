@@ -1,11 +1,16 @@
-import { useTheme } from '../../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../../store/redux-helpers/helper';
 import styles from './searchInput.module.scss';
-import { useState } from 'react';
+import { ChangeEvent } from 'react';
 
-const SearchInput = ({ search, setSearch }) => {
+interface SearchInputProps {
+  search: string;
+  setSearch: (search: string) => void;
+}
+
+const SearchInput: React.FC<SearchInputProps> = ({ search, setSearch }) => {
   const theme = useTheme();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 

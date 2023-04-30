@@ -1,4 +1,4 @@
-import { useTheme } from '../store/redux-helpers/themeHelper';
+import { useTheme } from '../store/redux-helpers/helper';
 
 interface Props {
   width: string;

@@ -1,9 +1,8 @@
-import { store } from '../../store';
 import { setloadMore, useData } from '../../store/features/dataSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { useTheme } from '../../store/redux-helpers/themeHelper';
+import { useTheme } from '../../store/redux-helpers/helper';
 import { fetchData } from '../../store/services/dataService';
-import { AllTypes, Item } from '../../types/ApiTypes';
+import { AllTypes } from '../../types/ApiTypes';
 import Card from '../Card';
 import Skeleton from '../Skeleton';
 import styles from './main.module.scss';
@@ -20,7 +19,6 @@ const Main: React.FC = () => {
 
   const disableLoadMoreButton = items.length === 0 || page >= totalPages;
 
-  console.log(totalPages, category, isLoading);
   // "Back to top" button
   useEffect(() => {
     const handleScroll = () => {
