@@ -2,13 +2,14 @@
 @import '../../styles/variables.scss';
 .card {
   min-width: 350px;
-  height: 300px;
+  height: 320px;
   color: black;
   background-color: rgb(252, 252, 252);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   &.dark {
-    background-color: #e0e0e0;
+    color: rgb(216, 213, 213);
+    background-color: #302f30;
   }
   .imgBox {
     padding-top: 50%;
@@ -29,10 +30,24 @@
     flex-direction: column;
     gap: 1rem;
     h3 {
-      font-size: 20px;
+      font-size: 18px;
       text-transform: capitalize;
     }
-    p {
+    .details {
+      display: grid;
+      gap: 0.5rem;
+      width: 70%;
+
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        span {
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
     }
   }
 }

@@ -1,0 +1,140 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.detailsPage {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 90vh;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+
+  &.dark {
+    background-color: #252525;
+  }
+  .title {
+    font-size: 30px;
+    text-transform: uppercase;
+    align-self: flex-start;
+    margin-left: 1rem;
+    margin-bottom: -1rem;
+    position: relative;
+    color: #fff;
+    text-shadow: $light-saber-light 0px 14px 28px,
+      $light-saber-light 0px 2px 8px;
+    &.dark {
+      text-shadow: $light-saber-dark 0px 14px 28px,
+        $light-saber-dark 0px 2px 8px;
+    }
+  }
+  .content {
+    background-color: #e0e0e0;
+    padding: 1rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    text-align: center;
+    position: relative;
+
+    &.dark {
+      color: rgb(216, 213, 213);
+      background-color: #302f30;
+    }
+    h3 {
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+    hr {
+      width: 80%;
+    }
+    .details {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 1rem;
+      border-radius: 3px;
+
+      .imgBox {
+        padding-top: 50%;
+        position: relative;
+        width: 400px;
+        height: 350px;
+        border-radius: 3px;
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .texts {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: start;
+        gap: 2rem;
+        padding: 2rem;
+        font-size: 14px;
+        p {
+          span {
+            line-height: 10px;
+            font-weight: 600;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+    .backBtn {
+      @include center;
+      background-color: rgba(0, 0, 0, 0.527);
+      padding: 0.8rem;
+      border-radius: 50%;
+      position: absolute;
+      border: none;
+      top: 15px;
+      left: 10px;
+      color: white;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      svg {
+        margin-right: 3px;
+      }
+
+      &.dark {
+        color: black;
+        background-color: rgba(255, 255, 255, 0.726);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.966);
+        }
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.74);
+      }
+    }
+  }
+}
+
+//Mobile
+@media only screen and (max-width: 640px) {
+  .detailsPage {
+    height: 100vh;
+    margin-bottom: 11rem;
+    .details {
+      flex-direction: column;
+      .imgBox {
+        width: 300px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+//Tablet
+@media only screen and (max-width: 1024px) {
+  .detailsPage {
+    .details {
+      flex-direction: column;
+    }
+  }
+}

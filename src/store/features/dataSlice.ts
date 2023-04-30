@@ -4,7 +4,7 @@ import { useAppSelector } from '../hooks';
 import { AllTypes, Item } from '../../types/ApiTypes';
 
 interface DataState {
-  count: number;
+  totalPages: number;
   items: AllTypes[];
   category: string;
   loadMore: string;
@@ -13,7 +13,7 @@ interface DataState {
 }
 
 const initialState: DataState = {
-  count: 1,
+  totalPages: 1,
   items: [],
   category: 'starships',
   loadMore: '',
@@ -42,7 +42,8 @@ const dataSlice = createSlice({
       } else {
         state.items = action.payload.results;
       }
-      state.count = action.payload.count;
+      // Calculating the number of pages for each category
+      state.totalPages = Math.ceil(action.payload.count / 10);
       state.isLoading = false;
     });
     builder.addCase(fetchData.rejected, (state, action) => {

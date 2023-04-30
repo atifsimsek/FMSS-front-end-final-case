@@ -4,13 +4,14 @@ import imageData from '../../data/ımageData.json';
 import { AllTypes } from '../../types/ApiTypes';
 import { Link } from 'react-router-dom';
 import { useData } from '../../store/features/dataSlice';
+import noImage from '../../assets/noİmage.png';
 
 interface Props {
   item: AllTypes;
-  index: number;
+  page: number;
 }
 
-const Card: React.FC<Props> = ({ item, index }: Props) => {
+const Card: React.FC<Props> = ({ item, page }: Props) => {
   const theme = useTheme();
   const { category } = useData();
   const img = imageData.find((image) => image.name === item.name)?.img;
@@ -18,7 +19,7 @@ const Card: React.FC<Props> = ({ item, index }: Props) => {
   return (
     <>
       {category === 'starships' ? (
-        <Link to={`details/${index}`}>
+        <Link to={`details/${page}/${item?.name}`}>
           <div className={`${styles.card} ${styles[theme]}`}>
             <div className={styles.imgBox}>
               {img ? (
@@ -29,18 +30,27 @@ const Card: React.FC<Props> = ({ item, index }: Props) => {
                     background: `${theme === 'dark' ? 'black' : 'gray'}`,
                     padding: '10px 50px',
                   }}
-                  src={
-                    'https://logolook.net/wp-content/uploads/2021/07/Star-Wars-Logo.png'
-                  }
+                  src={noImage}
                   alt=""
                 />
               )}
             </div>
             <div className={styles.texts}>
               <h3>{item?.name}</h3>
-              <p>{item?.model}</p>
-              <p>{item?.hyperdrive_rating}</p>
-              <p>{item?.max_atmosphering_speed}</p>
+              <div className={styles.details}>
+                <p>
+                  {' '}
+                  <span>Model</span>
+                  {item?.model}
+                </p>
+                <p>
+                  <span>Hyperdrive Ratings</span> {item?.hyperdrive_rating}
+                </p>
+                <p>
+                  <span>Max Atmosphering Speed</span>{' '}
+                  {item?.max_atmosphering_speed}
+                </p>
+              </div>
             </div>
           </div>
         </Link>

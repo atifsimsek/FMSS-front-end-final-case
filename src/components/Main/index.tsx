@@ -11,27 +11,21 @@ import { SlArrowUp } from 'react-icons/sl';
 
 const Main: React.FC = () => {
   const theme = useTheme();
-  const { items, category, count } = useData();
+  const { items, category, totalPages } = useData();
   const filter = useAppSelector((state) => state.filterData.filteredItems);
   const [showButton, setShowButton] = useState<boolean>(false);
-  // Calculating the number of pages for each category
-  const [page, setPage] = useState<number>(2);
-  const totalPages = Math.ceil(count / 10);
-  const disabledLoadMoreButton = items.length > 0 && page <= totalPages;
+  const [page, setPage] = useState<number>(1);
   const dispatch = useAppDispatch();
 
-  //Back to top  button
+  const disableLoadMoreButton = items.length === 0 || page >= totalPages;
+
+  // "Back to top" button
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 500) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
+      setShowButton(window.pageYOffset > 500);
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -39,17 +33,18 @@ const Main: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  //Get Data and reset page number
+  // Get data and reset page number
   useEffect(() => {
+    setPage(1);
     dispatch(fetchData({ category: category, page: 1 }));
-    setPage(2);
   }, [dispatch, category]);
 
-  //Load More
+  // Load more items
+
   const loadMore = () => {
-    setPage(page + 1);
     dispatch(setloadMore(category));
-    dispatch(fetchData({ category: category, page: page }));
+    dispatch(fetchData({ category: category, page: page + 1 }));
+    setPage(page + 1);
   };
 
   return (
@@ -57,9 +52,10 @@ const Main: React.FC = () => {
       <div className={`${styles.box} ${styles[theme]}`}>
         {filter &&
           filter.map((item: AllTypes, index: number) => (
-            <Card key={index} item={item} index={index} />
+            <Card key={index} item={item} page={page} />
           ))}
       </div>
+
       {showButton && (
         <div onClick={scrollTop} className={`${styles.icon} ${styles[theme]}`}>
           <SlArrowUp size={20} />
@@ -67,7 +63,7 @@ const Main: React.FC = () => {
       )}
 
       <button
-        disabled={!disabledLoadMoreButton}
+        disabled={disableLoadMoreButton}
         className={`${styles.loadMore} ${styles[theme]}`}
         onClick={loadMore}
       >

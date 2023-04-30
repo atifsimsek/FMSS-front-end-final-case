@@ -16,7 +16,7 @@ const routes: Route[] = [
   },
   {
     name: 'DetailsPage',
-    path: 'details/:id',
+    path: 'details/:page/:id',
     element: <DetailsPage />,
   },
 ];
