@@ -60,3 +60,7 @@ npm install
 ```sh
 npm run dev
 ```
+
+## Thanks
+
+Thank you to the FMSS IT and Patika team, as well as everyone involved, for their contributions in preparing this Practicum.
