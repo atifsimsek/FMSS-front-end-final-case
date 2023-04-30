@@ -37,7 +37,7 @@ Technologies used in the project:
 
 ## Project View
 
-[Project presentation video](https://www.loom.com/share/ae54c48cd69c4724adc7111550af6422)
+[Project presentation video](https://www.loom.com/share/f2a2bca3e0bb4252acf379a8256d987d)
 
 ## 🛠️ Installation Steps
 
@@ -64,3 +64,9 @@ npm run dev
 ## Thanks
 
 Thank you to the FMSS IT and Patika team, as well as everyone involved, for their contributions in preparing this Practicum.
+
+## Project screenshots
+
+<img src="src/assets/screenshot1.png"  width="500" />
+<br/>
+<img src="src/assets/screenshot2.png"  width="500" />
