@@ -2,7 +2,7 @@ import { useTheme } from '../../store/redux-helpers/helper';
 import styles from './card.module.scss';
 import imageData from '../../data/ımageData.json';
 import { AllTypes } from '../../types/ApiTypes';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { handleFavorite, useData } from '../../store/features/dataSlice';
 import noImage from '../../assets/noİmage.png';
 import { useAppDispatch } from '../../store/hooks';
@@ -16,6 +16,7 @@ interface Props {
 
 const Card: React.FC<Props> = ({ item, page }: Props) => {
   const theme = useTheme();
+  const params = useLocation();
 
   const { category, favorites } = useData();
   const [fav, setFav] = useState(false);
@@ -102,7 +103,7 @@ const Card: React.FC<Props> = ({ item, page }: Props) => {
             </>
           )}
         </div>
-        {category === 'starships' && (
+        {category === 'starships' && params.pathname !== '/favorites' && (
           <Link
             to={`details/${page}/${item?.name}`}
             className={`${styles.detailsBtn} ${styles[theme]}`}
