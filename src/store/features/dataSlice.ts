@@ -41,7 +41,7 @@ const dataSlice = createSlice({
     handleFavorite: (state, action) => {
       const data = action.payload;
       const index = state.favorites.findIndex(
-        (item: any) => item.name === data.name
+        (item: AllTypes) => item.name === data.name
       );
       if (index === -1) {
         state.favorites.push(data);

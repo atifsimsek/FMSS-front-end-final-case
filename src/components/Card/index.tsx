@@ -26,7 +26,7 @@ const Card: React.FC<Props> = ({ item, page }: Props) => {
 
   useEffect(() => {
     const isFav =
-      favorites.findIndex((fav: any) => fav.name === item.name) !== -1;
+      favorites.findIndex((fav: AllTypes) => fav.name === item.name) !== -1;
     setFav(isFav);
   }, [favorites, item.name]);
 
