@@ -10,7 +10,7 @@ import {
 } from '../../store/features/filterSlice';
 import SearchInput from '../Inputs/SearchInput';
 import SelectInput from '../Inputs/SelectInput';
-import styles from './Filter.module.scss';
+import styles from './filter.module.scss';
 import { AllTypes } from '../../types/ApiTypes';
 import { MdMenuOpen } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
