@@ -70,3 +70,24 @@
     }
   }
 }
+
+//Mobile
+@media only screen and (max-width: 640px) {
+  .main {
+    flex: 0 !important;
+    background-color: #fff;
+    &.dark {
+      background-color: $dark-5;
+    }
+  }
+}
+
+//Tablet
+@media only screen and (max-width: 1024px) {
+  .main {
+    background-color: #fff;
+    &.dark {
+      background-color: $dark-5;
+    }
+  }
+}

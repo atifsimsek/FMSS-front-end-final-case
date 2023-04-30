@@ -8,7 +8,7 @@
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   &.dark {
-    color: rgb(216, 213, 213);
+    color: white;
     background-color: #302f30;
   }
   .imgBox {
@@ -37,17 +37,37 @@
       display: grid;
       gap: 0.5rem;
       width: 70%;
-
-      p {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 12px;
-        span {
-          font-size: 14px;
-          font-weight: 600;
-        }
+    }
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      span {
+        font-size: 14px;
+        font-weight: 600;
       }
+    }
+  }
+}
+
+h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.details {
+  display: grid;
+  gap: 0.5rem;
+  width: 70%;
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+
+    span {
+      font-size: 14px;
+      font-weight: 600;
     }
   }
 }

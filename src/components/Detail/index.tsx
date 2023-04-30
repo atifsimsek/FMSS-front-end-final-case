@@ -1,4 +1,4 @@
-import styles from './detail.module.scss';
+import styles from './details.module.scss';
 import imageData from '../../data/ımageData.json';
 import { useData } from '../../store/features/dataSlice';
 import { useTheme } from '../../store/redux-helpers/themeHelper';

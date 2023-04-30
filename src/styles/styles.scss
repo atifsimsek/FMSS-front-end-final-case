@@ -14,3 +14,20 @@
     gap: 1rem;
   }
 }
+
+//Mobile
+@media only screen and (max-width: 640px) {
+  .container {
+    position: relative;
+    display: block !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+}
+
+//Tablet
+@media only screen and (max-width: 1024px) {
+  .links {
+    display: none !important;
+  }
+}

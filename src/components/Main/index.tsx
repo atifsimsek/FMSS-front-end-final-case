@@ -5,13 +5,14 @@ import { useTheme } from '../../store/redux-helpers/themeHelper';
 import { fetchData } from '../../store/services/dataService';
 import { AllTypes, Item } from '../../types/ApiTypes';
 import Card from '../Card';
+import Skeleton from '../Skeleton';
 import styles from './main.module.scss';
 import { useEffect, useState } from 'react';
 import { SlArrowUp } from 'react-icons/sl';
 
 const Main: React.FC = () => {
   const theme = useTheme();
-  const { items, category, totalPages } = useData();
+  const { items, category, totalPages, isLoading } = useData();
   const filter = useAppSelector((state) => state.filterData.filteredItems);
   const [showButton, setShowButton] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -19,6 +20,7 @@ const Main: React.FC = () => {
 
   const disableLoadMoreButton = items.length === 0 || page >= totalPages;
 
+  console.log(totalPages, category, isLoading);
   // "Back to top" button
   useEffect(() => {
     const handleScroll = () => {
@@ -51,9 +53,13 @@ const Main: React.FC = () => {
     <main className={`${styles.main} ${styles[theme]}`}>
       <div className={`${styles.box} ${styles[theme]}`}>
         {filter &&
-          filter.map((item: AllTypes, index: number) => (
-            <Card key={index} item={item} page={page} />
-          ))}
+          filter.map((item: AllTypes, index: number) =>
+            isLoading ? (
+              <Skeleton key={index} />
+            ) : (
+              <Card key={index} item={item} page={page} />
+            )
+          )}
       </div>
 
       {showButton && (

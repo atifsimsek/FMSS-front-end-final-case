@@ -22,3 +22,54 @@
     gap: 2rem;
   }
 }
+.menu {
+  @include center;
+  position: fixed;
+  top: 80px;
+  background-color: none;
+  border: none;
+  padding: 0.5rem;
+  z-index: 110;
+  border-radius: 50%;
+  display: none;
+}
+
+.open {
+  transform: translateX(0px) !important;
+}
+
+//Mobile
+@media only screen and (max-width: 640px) {
+  .filter {
+    display: visible;
+    position: fixed;
+    z-index: 100;
+    top: 100px;
+    transform: translateX(-300px);
+    transition: all 1s;
+    left: 15px;
+  }
+  .menu {
+    display: flex !important;
+    position: fixed;
+  }
+}
+
+//Tablet
+@media only screen and (max-width: 1024px) {
+  .filter {
+    display: visible;
+    position: fixed;
+    z-index: 100;
+    top: 100px;
+    transform: translateX(-350px);
+    transition: all 1s;
+  }
+  .menu {
+    display: flex !important;
+    left: 5px;
+  }
+  .open {
+    transform: translateX(-30px) !important;
+  }
+}

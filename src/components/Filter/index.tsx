@@ -12,10 +12,13 @@ import SearchInput from '../Inputs/SearchInput';
 import SelectInput from '../Inputs/SelectInput';
 import styles from './Filter.module.scss';
 import { AllTypes, Item } from '../../types/ApiTypes';
+import { MdMenuOpen, MdMenu } from 'react-icons/md';
+import { FiSearch } from 'react-icons/fi';
 
 const Filter: React.FC = () => {
   // State for filter options
   const [search, setSearch] = useState<string>('');
+  const [open, setOpen] = useState(false);
   const [hyperdriveRatingFilter, setHyperdriveRatingFilter] =
     useState<string>('ChooseOne');
   const [speedFilter, setSpeedFilter] = useState<string>('ChooseOne');
@@ -64,31 +67,43 @@ const Filter: React.FC = () => {
   }, [category]);
 
   return (
-    <div className={`${styles.filter} ${styles[theme]}`}>
-      <SearchInput search={search} setSearch={setSearch} />
-      {category === 'starships' && (
-        <div className={styles.selectBoxs}>
-          <SelectInput
-            title="Filter by Hyperdrive Ratings"
-            selected={hyperdriveRatingFilter}
-            setSelected={setHyperdriveRatingFilter}
-            options={hyperdriveRatingOptions}
-          />
-          <SelectInput
-            title="Sort by Speed"
-            selected={speedFilter}
-            setSelected={setSpeedFilter}
-            options={speedOptions}
-          />
-          <SelectInput
-            title="Sort Alphabetically"
-            selected={sortAlphabetFilter}
-            setSelected={setSortAlphabetFilter}
-            options={sortByAlphabetOptions}
-          />
-        </div>
-      )}
-    </div>
+    <>
+      <div
+        className={`${styles.filter} ${open && styles.open}  ${styles[theme]}`}
+      >
+        <SearchInput search={search} setSearch={setSearch} />
+        {category === 'starships' && (
+          <div className={styles.selectBoxs}>
+            <SelectInput
+              title="Filter by Hyperdrive Ratings"
+              selected={hyperdriveRatingFilter}
+              setSelected={setHyperdriveRatingFilter}
+              options={hyperdriveRatingOptions}
+            />
+            <SelectInput
+              title="Sort by Speed"
+              selected={speedFilter}
+              setSelected={setSpeedFilter}
+              options={speedOptions}
+            />
+            <SelectInput
+              title="Sort Alphabetically"
+              selected={sortAlphabetFilter}
+              setSelected={setSortAlphabetFilter}
+              options={sortByAlphabetOptions}
+            />
+          </div>
+        )}
+      </div>
+      <button
+        onClick={() => {
+          setOpen(!open);
+        }}
+        className={styles.menu}
+      >
+        {open ? <MdMenuOpen size={18} /> : <FiSearch size={18} />}
+      </button>
+    </>
   );
 };
 

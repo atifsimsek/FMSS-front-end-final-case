@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
+import NotFound from './components/NotFound';
 
 interface Route {
   name: string;
@@ -18,6 +19,11 @@ const routes: Route[] = [
     name: 'DetailsPage',
     path: 'details/:page/:id',
     element: <DetailsPage />,
+  },
+  {
+    name: '404page',
+    path: '/*',
+    element: <NotFound />,
   },
 ];
 

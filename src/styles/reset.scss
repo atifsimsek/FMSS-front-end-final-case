@@ -2,6 +2,7 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 html,
@@ -106,7 +107,8 @@ input {
   border-radius: 0;
 }
 
-a {
+a,
+button {
   text-decoration: none;
 }
 
