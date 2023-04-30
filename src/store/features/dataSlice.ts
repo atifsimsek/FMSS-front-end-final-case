@@ -16,7 +16,7 @@ interface DataState {
 
 const initialState: DataState = {
   currentPage: 1,
-  favorites: [],
+  favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
   totalPages: 1,
   items: [],
   category: 'starships',
@@ -48,6 +48,7 @@ const dataSlice = createSlice({
       } else {
         state.favorites.splice(index, 1);
       }
+      localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
   },
   extraReducers(builder) {
