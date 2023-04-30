@@ -25,7 +25,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ search, setSearch }) => {
       />
       <span className={styles.highlight}></span>
       <span className={`${styles.bar} ${styles[theme]}`}></span>
-      <label className={styles[theme]}>Search / Name / Title</label>
+      <label className={styles[theme]}> Name / Model / Title</label>
     </div>
   );
 };

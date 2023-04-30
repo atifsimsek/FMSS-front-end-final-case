@@ -1,10 +1,6 @@
 import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import Categories from './components/Categories';
 import './styles/reset.scss';
 import './styles/styles.scss';
-import Filter from './components/Filter';
-import Main from './components/Main';
 import { useTheme } from './store/redux-helpers/helper';
 import Footer from './components/Footer';
 import Layout from './pages/Layout';

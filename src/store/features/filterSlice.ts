@@ -100,9 +100,9 @@ const filterSlice = createSlice({
         items.slice().sort((a, b) => {
           switch (filter) {
             case 'a-z':
-              return a.name.localeCompare(b.name);
+              return a?.name.localeCompare(b?.name);
             case 'z-a':
-              return b.name.localeCompare(a.name);
+              return b?.name.localeCompare(a?.name);
             default:
               return 0;
           }

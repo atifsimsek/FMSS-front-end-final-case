@@ -3,7 +3,7 @@ import { useTheme } from '../../store/redux-helpers/helper';
 import styles from './categories.module.scss';
 import { useAppDispatch } from '../../store/hooks';
 import { fetchData } from '../../store/services/dataService';
-import { setCategory } from '../../store/features/dataSlice';
+import { setCategory, setloadMore } from '../../store/features/dataSlice';
 import { categories } from '../../constants/data';
 
 const Categories: React.FC = () => {
@@ -18,6 +18,7 @@ const Categories: React.FC = () => {
       setButtonIndex(null);
     } else {
       setButtonIndex(index);
+      dispatch(setloadMore(''));
       dispatch(setCategory(category));
       dispatch(fetchData({ category, page: 1 }));
     }

@@ -1,12 +1,10 @@
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RxHome } from 'react-icons/rx';
-import { AiOutlineUser } from 'react-icons/ai';
 import { LinkItem } from '../types/DataTypes';
 
 //Links
 export const links: LinkItem[] = [
   { title: 'Home', href: '/', Icon: <RxHome size={25} /> },
-  { title: 'Login', href: '/login', Icon: <AiOutlineUser size={25} /> },
   {
     title: 'Favorites',
     href: '/favorites',

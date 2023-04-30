@@ -1,4 +1,5 @@
 import {
+  setCategory,
   setCurrentPage,
   setloadMore,
   useData,
@@ -39,6 +40,7 @@ const Main: React.FC = () => {
 
   // Get data and reset page number
   useEffect(() => {
+    dispatch(setCategory(category));
     dispatch(setCurrentPage(1));
     dispatch(fetchData({ category: category, page: 1 }));
   }, [dispatch, category]);

@@ -6,7 +6,7 @@ interface Props {
   transform: string;
 }
 
-const Svg = ({ width, height, transform }: Props) => {
+const Svg = ({ transform }: Props) => {
   const theme = useTheme();
   return (
     <svg
