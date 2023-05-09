@@ -37,7 +37,7 @@ Technologies used in the project:
 
 ## Project View
 
-[Project presentation video](https://www.loom.com/share/b3e5c8b034af41e2ad3e97e17147ed28)
+[Project presentation video](https://www.loom.com/share/e978314e6aaf417d8df21dfd437c821e)
 
 ## 🛠️ Installation Steps
 
